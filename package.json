@@ -1,0 +1,83 @@
+{
+  "name": "lp2ln-extension",
+  "displayName": "LP2LN Extension",
+  "description": "Расширение для работы с LP2LN API",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:lp2ln-extension.connect",
+    "onCommand:lp2ln-extension.uploadFile",
+    "onCommand:lp2ln-extension.listFiles",
+    "onCommand:lp2ln-extension.deleteFile",
+    "onCommand:lp2ln-extension.editFile",
+    "onCommand:lp2ln-extension.getFileByHash"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "lp2ln-extension.connect",
+        "title": "LP2LN: Подключиться к серверу"
+      },
+      {
+        "command": "lp2ln-extension.uploadFile",
+        "title": "LP2LN: Загрузить файл"
+      },
+      {
+        "command": "lp2ln-extension.listFiles",
+        "title": "LP2LN: Список файлов"
+      },
+      {
+        "command": "lp2ln-extension.deleteFile",
+        "title": "LP2LN: Удалить файл"
+      },
+      {
+        "command": "lp2ln-extension.editFile",
+        "title": "LP2LN: Редактировать файл"
+      },
+      {
+        "command": "lp2ln-extension.getFileByHash",
+        "title": "LP2LN: Получить файл по хешу"
+      }
+    ],
+    "configuration": {
+      "title": "LP2LN",
+      "properties": {
+        "lp2ln.host": {
+          "type": "string",
+          "default": "212.109.220.163",
+          "description": "Хост LP2LN сервера"
+        },
+        "lp2ln.port": {
+          "type": "number",
+          "default": 8081,
+          "description": "Порт LP2LN API сервера"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.126",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.2"
+  }
+}
